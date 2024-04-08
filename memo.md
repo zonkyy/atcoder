@@ -1,0 +1,3 @@
+- proconio
+  - Usize1, Isize1 を使えば、1 始まりを 0 始まりに変換できる
+  - Chars で Vec<char> を作成できる
