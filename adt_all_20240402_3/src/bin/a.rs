@@ -3,7 +3,11 @@ use proconio::{fastout, input, marker::*};
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        s: Chars,
     };
+
+    // let ans = s[s.len() / 2];
+    // println!("{}", ans);
+
+    println!("{:?}", 7 / 2);
 }

@@ -3,7 +3,10 @@ use proconio::{fastout, input, marker::*};
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        k: usize,
     };
+
+    let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".chars().collect::<Vec<_>>();
+    let ans = alphabet[0..k].iter().collect::<String>();
+    println!("{}", ans);
 }
