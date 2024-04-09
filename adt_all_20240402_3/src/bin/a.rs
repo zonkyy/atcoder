@@ -6,8 +6,6 @@ fn main() {
         s: Chars,
     };
 
-    // let ans = s[s.len() / 2];
-    // println!("{}", ans);
-
-    println!("{:?}", 7 / 2);
+    let ans = s[s.len() / 2];
+    println!("{}", ans);
 }
