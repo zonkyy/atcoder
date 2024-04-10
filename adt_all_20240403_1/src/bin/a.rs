@@ -3,7 +3,8 @@ use proconio::{fastout, input, marker::*};
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        s: Chars,
     };
+
+    println!("0{}", s[0..=2].iter().collect::<String>());
 }
