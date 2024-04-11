@@ -1,0 +1,7 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "./adt_all_20240403_2/Cargo.toml",
+        "./adt_all_20240403_1/Cargo.toml",
+        "./adt_all_20240403_1/Cargo.toml"
+    ]
+}
