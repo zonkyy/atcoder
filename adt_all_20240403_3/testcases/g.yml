@@ -21,6 +21,13 @@ cases:
       20 50
     out: |
       10 60
+  - name: my1
+    in: |
+      2
+      1 20
+      10 15
+    out: |
+      1 20
 
 extend:
   - type: Text

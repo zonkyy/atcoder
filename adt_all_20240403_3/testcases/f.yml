@@ -21,7 +21,7 @@ cases:
     out: |
       PCT..
       .PCT.
-      PCTPC
+      PCPCT
 
 extend:
   - type: Text
