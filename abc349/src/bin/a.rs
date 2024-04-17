@@ -4,6 +4,9 @@ use proconio::{fastout, input, marker::*};
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        a: [i64; n-1],
     };
+
+    let ans = -a.into_iter().sum::<i64>();
+    println!("{}", ans);
 }
