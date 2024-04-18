@@ -1,22 +1,22 @@
+use num::Rational64;
 use proconio::{fastout, input, marker::*};
 
 #[fastout]
 fn main() {
     input! {
         n: usize,
-        ab: [(usize, usize); n],
+        ab: [(i64, i64); n],
     };
 
-    let mut ab = ab
-        .iter()
-        .enumerate()
-        .map(|(i, (a, b))| (i + 1, a, a + b))
-        .collect::<Vec<_>>();
-    ab.sort_by(|a, b| (b.1 * a.2).cmp(&(a.1 * b.2)));
+    let mut v = Vec::new();
+    for (i, (a, b)) in ab.iter().enumerate() {
+        v.push((i + 1, Rational64::new(*a, *a + *b)));
+    }
+    v.sort_by(|a, b| b.1.cmp(&a.1));
     println!(
         "{}",
-        ab.iter()
-            .map(|(i, _, _)| i.to_string())
+        v.iter()
+            .map(|(i, _)| i.to_string())
             .collect::<Vec<_>>()
             .join(" ")
     );
