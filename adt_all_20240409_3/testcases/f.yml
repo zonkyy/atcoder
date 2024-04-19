@@ -22,6 +22,12 @@ cases:
       5
     out: |
       0
+  - name: srnd_01
+    in: |
+      3
+      3 1 1
+    out: |
+      2
 
 extend:
   - type: Text

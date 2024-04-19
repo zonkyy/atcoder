@@ -4,6 +4,15 @@ use proconio::{fastout, input, marker::*};
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        w: [String; n],
     };
+
+    for s in w {
+        if ["and", "not", "that", "the", "you"].contains(&s.as_str()) {
+            println!("Yes");
+            return;
+        }
+    }
+
+    println!("No");
 }
