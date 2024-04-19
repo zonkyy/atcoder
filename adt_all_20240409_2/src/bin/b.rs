@@ -3,7 +3,8 @@ use proconio::{fastout, input, marker::*};
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        a: [usize; 10],
     };
+
+    println!("{}", a[a[a[0]]]);
 }

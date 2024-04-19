@@ -3,7 +3,9 @@ use proconio::{fastout, input, marker::*};
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        s: String,
+        t: String,
     };
+
+    println!("{}", if s.contains(&t) { "Yes" } else { "No" });
 }
