@@ -3,13 +3,7 @@
 version = 3
 
 [[package]]
-name = "ac-library-rs"
-version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "09e1ead7b72f44698f97266946c0576d00c9e2010858f5aba47aa4660177ef73"
-
-[[package]]
-name = "adt_all_20240410_1"
+name = "abc344"
 version = "0.1.0"
 dependencies = [
  "ac-library-rs",
@@ -75,6 +69,12 @@ dependencies = [
  "text_io",
  "varisat",
 ]
+
+[[package]]
+name = "ac-library-rs"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "09e1ead7b72f44698f97266946c0576d00c9e2010858f5aba47aa4660177ef73"
 
 [[package]]
 name = "aho-corasick"
