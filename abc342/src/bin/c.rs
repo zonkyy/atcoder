@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{BTreeMap, HashMap};
 
 use proconio::{fastout, input, marker::*};
 
@@ -11,22 +11,21 @@ fn main() {
         cd: [(char, char); q],
     };
 
-    let mut place = HashMap::new();
-    for (i, &c) in s.iter().enumerate() {
-        place.entry(c).or_insert(vec![]).push(i);
+    let mut table = BTreeMap::new();
+    for c in 'a'..='z' {
+        table.insert(c, c);
     }
 
-    let mut mut_s = s.clone();
-    for &(c, d) in &cd {
-        if let Some(entry) = place.get(&c) {
-            let indices = entry.clone();
-            for i in indices {
-                mut_s[i] = d;
-                place.entry(d).or_insert(vec![]).push(i);
+    for &(c, d) in cd.iter() {
+        for (k, v) in table.clone() {
+            if v == c {
+                *table.entry(k).or_default() = d;
             }
-            place.remove(&c);
         }
     }
 
-    println!("{}", mut_s.iter().collect::<String>());
+    for c in s {
+        print!("{}", table[&c]);
+    }
+    println!();
 }
