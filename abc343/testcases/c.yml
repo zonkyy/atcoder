@@ -19,6 +19,22 @@ cases:
       123456789012345
     out: |
       1334996994331
+  - name: my1
+    in: |
+      1
+    out: |
+      1
+  - name: my2
+    in: |
+      2
+    out: |
+      1
+  - name: my3
+    in: |
+      1000000000000000000
+    out: |
+      1331399339931331
+
 
 extend:
   - type: Text
