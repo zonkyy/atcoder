@@ -4,6 +4,10 @@ use proconio::{fastout, input, marker::*};
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
     };
+
+    for _ in 0..n {
+        print!("10");
+    }
+    println!("1");
 }
