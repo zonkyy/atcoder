@@ -1,3 +1,8 @@
+use std::{
+    cmp::Reverse,
+    collections::{BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
+};
+
 use proconio::{fastout, input, marker::*};
 
 #[fastout]
@@ -7,15 +12,34 @@ fn main() {
         mut abx: [(usize, usize, Usize1); n-1],
     };
     const UPPER: usize = usize::MAX;
-    abx.sort_by_key(|x| x.2);
 
-    let mut dp = vec![UPPER; n];
-    dp[0] = 0;
-
+    let mut g = HashMap::new();
     for (i, &(a, b, x)) in abx.iter().enumerate() {
-        dp[i + 1] = dp[i + 1].min(dp[i] + a);
-        dp[x] = dp[x].min(dp[i] + b);
+        g.entry(i)
+            .or_insert(vec![])
+            .extend(vec![(i + 1, a), (x, b)]);
     }
 
-    println!("{:?}", dp);
+    let mut distance = vec![UPPER; n];
+    distance[0] = 0;
+    let mut heap = BinaryHeap::new();
+    for i in 1..n {
+        heap.push((Reverse(UPPER), i));
+    }
+    heap.push((Reverse(0), 0));
+
+    while let Some((Reverse(d), stage)) = heap.pop() {
+        if d > distance[stage] || stage >= n - 1 {
+            continue;
+        }
+
+        for &(next, to_d) in g.get(&stage).unwrap() {
+            if distance[stage] + to_d < distance[next] {
+                distance[next] = distance[stage] + to_d;
+                heap.push((Reverse(distance[next]), next));
+            }
+        }
+    }
+
+    println!("{}", distance[n - 1]);
 }
