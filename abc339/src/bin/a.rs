@@ -3,7 +3,8 @@ use proconio::{fastout, input, marker::*};
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        s: String,
     };
+
+    println!("{}", s.split(".").collect::<Vec<_>>().last().unwrap());
 }
