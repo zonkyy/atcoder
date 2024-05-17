@@ -3,7 +3,14 @@ use proconio::{fastout, input, marker::*};
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        mut n: usize,
     };
+
+    let mut ans = 0;
+    while n % 2 == 0 {
+        ans += 1;
+        n /= 2;
+    }
+
+    println!("{}", ans);
 }
