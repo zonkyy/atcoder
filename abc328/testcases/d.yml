@@ -1,7 +1,7 @@
 ---
 type: Batch
 timelimit: 2s
-match: Lines
+match: SplitWhitespace
 
 cases:
   - name: sample1
@@ -18,6 +18,11 @@ cases:
       AAABCABCABCAABCABCBBBAABCBCCCAAABCBCBCC
     out: |
       AAABBBCCC
+  - name: my1
+    in: |
+      AABBCC
+    out: |
+      AABBCC
 
 extend:
   - type: Text

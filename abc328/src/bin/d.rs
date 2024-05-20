@@ -1,5 +1,6 @@
 use std::{cmp, collections::BTreeSet};
 
+use itertools::Itertools;
 use proconio::{fastout, input, marker::*};
 
 #[fastout]
@@ -8,26 +9,36 @@ fn main() {
         s: Chars,
     };
 
-    let mut set = (0..s.len()).collect::<BTreeSet<_>>();
-    let mut idx = 0;
-    while set.len() >= 2 && idx < set.len() - 2 {
-        let a = *set.iter().nth(idx).unwrap();
-        let b = *set.iter().nth(idx + 1).unwrap();
-        let c = *set.iter().nth(idx + 2).unwrap();
-        if s[a] == 'A' && s[b] == 'B' && s[c] == 'C' {
-            set.remove(&a);
-            set.remove(&b);
-            set.remove(&c);
-            idx = if idx >= 2 { idx - 2 } else { 0 };
-        } else {
-            idx += 1;
-        }
+    let mut buf = Vec::new();
+    let mut next = 'A';
+    for &c in s.iter() {
+        match (next, c) {
+            (_, 'A') => {
+                buf.push(c);
+                next = 'B';
+            }
+            ('B', 'B') => {
+                buf.push(c);
+                next = 'C';
+            }
+            ('C', 'C') => {
+                buf.pop();
+                buf.pop();
+                if buf.len() == 0 {
+                    next = 'A';
+                } else if buf.last().unwrap() == &'B' {
+                    next = 'C';
+                } else {
+                    next = 'B';
+                }
+            }
+            _ => {
+                print!("{}", buf.iter().join(""));
+                buf.clear();
+                print!("{}", c);
+                next = 'A';
+            }
+        };
     }
-
-    for &i in set.iter() {
-        print!("{}", s[i]);
-    }
-    if set.len() > 0 {
-        println!();
-    }
+    println!("{}", buf.iter().join(""));
 }
