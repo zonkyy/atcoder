@@ -8,7 +8,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "Rust Debug Launch",
-            "program": "${workspaceRoot}/target/debug/abc337-${fileBasenameNoExtension}",
+            "program": "${workspaceRoot}/target/debug/abc330-${fileBasenameNoExtension}",
             "args": [],
             "cwd": "${workspaceRoot}/target/debug/",
             "sourceLanguages": [
