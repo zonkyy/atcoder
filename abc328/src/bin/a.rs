@@ -4,6 +4,9 @@ use proconio::{fastout, input, marker::*};
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        x: usize,
+        s: [usize; n],
     };
+
+    println!("{}", s.iter().filter(|&e| *e <= x).sum::<usize>());
 }
