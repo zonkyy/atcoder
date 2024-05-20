@@ -10,8 +10,8 @@ fn main() {
     let mut row_other_cnt = vec![vec![0; n]; n];
     let mut col_other_cnt = vec![vec![0; n]; n];
     for a in 0..n {
-        let mut row_cnt = 0;
-        let mut col_cnt = 0;
+        let mut row_cnt: usize = 0;
+        let mut col_cnt: usize = 0;
         for b in 0..n {
             if field[a][b] == 'o' {
                 row_cnt += 1;
