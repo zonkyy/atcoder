@@ -1,3 +1,17 @@
 - proconio
   - Usize1, Isize1 を使えば、1 始まりを 0 始まりに変換できる
   - Chars で Vec<char> を作成できる
+- 転置行列
+  - テンプレートを使って .transpose() が可能
+  - 遅ければ、配列確保後 v2[j][i] = v[i][j] を回すのがいい
+- 木の 2 色塗り分け
+  - 2-SAT で解ける
+- 2-SAT
+  - atcoder library に入ってる
+- lower/upper_bound (ある数以上の最小値、ある数以下の最大値、2 分探索)
+  - ある数以上の最小、等は slice::partition_point が使える
+  - 2 分探索で値検索は slice::binary_search
+  - superslice ライブラリという選択もあるらしい
+- priority_queue (最大を取り出し続ける)
+  - std::collections:BinaryHeap  が使える
+  - 最小を取り出したい場合は std::cmp::Reverse<usize> を入れる
