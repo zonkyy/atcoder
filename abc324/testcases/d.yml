@@ -22,6 +22,36 @@ cases:
       8694027811503
     out: |
       840
+  - name: my0
+    in: |
+      1
+      0
+    out: |
+      1
+  - name: my1
+    in: |
+      1
+      1
+    out: |
+      1
+  - name: my2
+    in: |
+      1
+      2
+    out: |
+      0
+  - name: my4
+    in: |
+      1
+      4
+    out: |
+      1
+  - name: my9
+    in: |
+      1
+      9
+    out: |
+      1
 
 extend:
   - type: Text
