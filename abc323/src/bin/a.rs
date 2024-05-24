@@ -26,7 +26,15 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        s: Chars,
     };
+
+    for i in 0..16 {
+        if i % 2 == 1 && s[i] != '0' {
+            println!("No");
+            return;
+        }
+    }
+
+    println!("Yes");
 }

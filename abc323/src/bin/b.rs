@@ -1,3 +1,4 @@
+use itertools::Itertools;
 use proconio::{fastout, input, marker::*};
 
 trait Transpose<Iter: IntoIterator> {
@@ -27,6 +28,19 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        s: [Chars; n],
     };
+
+    let ans = s
+        .iter()
+        .enumerate()
+        .sorted_by(|(_, a), (_, b)| {
+            Ord::cmp(
+                &b.iter().counts().get(&'o').unwrap_or(&0),
+                &a.iter().counts().get(&'o').unwrap_or(&0),
+            )
+        })
+        .map(|(i, _)| i + 1)
+        .join(" ");
+    println!("{}", ans);
 }

@@ -1,3 +1,5 @@
+use std::collections::BinaryHeap;
+
 use proconio::{fastout, input, marker::*};
 
 trait Transpose<Iter: IntoIterator> {
@@ -27,6 +29,48 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        m: usize,
+        a: [usize; m],
+        s: [Chars; n],
     };
+
+    let mut top2 = vec![0; 2];
+    for (bonus, line) in s.iter().enumerate() {
+        let mut point = bonus;
+        for i in 0..m {
+            if line[i] == 'o' {
+                point += a[i];
+            }
+        }
+        if point > top2[0] {
+            top2[1] = top2[0];
+            top2[0] = point;
+        } else if point > top2[1] {
+            top2[1] = point;
+        }
+    }
+
+    for (bonus, line) in s.iter().enumerate() {
+        let mut bh = BinaryHeap::new();
+        let mut point = bonus;
+        for i in 0..m {
+            if line[i] == 'o' {
+                point += a[i];
+            } else {
+                bh.push(a[i]);
+            }
+        }
+
+        if top2[0] == point {
+            println!("0");
+            continue;
+        }
+
+        let mut ans = 0;
+        while point <= top2[0] {
+            point += bh.pop().unwrap();
+            ans += 1;
+        }
+        println!("{}", ans);
+    }
 }
