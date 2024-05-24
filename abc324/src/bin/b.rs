@@ -26,7 +26,19 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        mut n: usize,
     };
+
+    while n > 1 && n % 2 == 0 {
+        n /= 2
+    }
+    while n > 1 && n % 3 == 0 {
+        n /= 3
+    }
+
+    if n == 1 {
+        println!("Yes");
+    } else {
+        println!("No");
+    }
 }

@@ -24,6 +24,11 @@ cases:
       37748736
     out: |
       Yes
+  - name: my1
+    in: |
+      1000000000000000000
+    out: |
+      No
 
 extend:
   - type: Text
