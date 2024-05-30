@@ -27,6 +27,18 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        m: usize,
+        s: String,
+        t: String,
     };
+
+    let l = t.find(&s);
+    let r = t.rfind(&s);
+    let ans = match (l, r) {
+        (Some(0), Some(i)) if i == m - n => 0,
+        (Some(0), _) => 1,
+        (_, Some(i)) if i == m - n => 2,
+        _ => 3,
+    };
+    println!("{}", ans);
 }

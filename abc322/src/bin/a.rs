@@ -27,6 +27,12 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        s: String,
     };
+
+    if let Some(ans) = s.find("ABC") {
+        println!("{}", ans + 1);
+    } else {
+        println!("-1");
+    }
 }

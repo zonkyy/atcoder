@@ -27,6 +27,15 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        m: usize,
+        a: [Usize1; m],
     };
+
+    let mut idx = 0;
+    for i in 0..n {
+        println!("{}", a[idx] - i);
+        if a[idx] - i == 0 {
+            idx += 1;
+        }
+    }
 }
