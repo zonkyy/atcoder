@@ -26,7 +26,14 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        n: Chars,
     };
+
+    for i in 1..n.len() {
+        if n[i - 1] <= n[i] {
+            println!("No");
+            return;
+        }
+    }
+    println!("Yes");
 }

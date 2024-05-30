@@ -27,6 +27,20 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        x: usize,
+        a: [usize; n-1],
     };
+
+    for i in 0..=100 {
+        let mut v = a.clone();
+        v.push(i);
+        v.sort();
+
+        if v[1..(v.len() - 1)].iter().sum::<usize>() >= x {
+            println!("{}", i);
+            return;
+        }
+    }
+
+    println!("-1");
 }
