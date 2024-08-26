@@ -1,3 +1,4 @@
+use itertools::Itertools;
 use proconio::{fastout, input, marker::*};
 
 trait Transpose<Iter: IntoIterator> {
@@ -26,7 +27,18 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        k: usize,
     };
+
+    let mut list = Vec::new();
+    for i in 1..=10 {
+        for mut comb in (0..=9).combinations(i) {
+            comb.sort();
+            let s = format!("{:0>10}", comb.iter().rev().join(""));
+            list.push(s);
+        }
+    }
+
+    list.sort();
+    println!("{}", list[k].trim_start_matches("0"));
 }

@@ -27,6 +27,32 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        m: usize,
+        p: usize,
+        mut a: [usize; n],
+        mut b: [usize; m],
     };
+    a.sort();
+    b.sort();
+
+    let mut acc = vec![0];
+    acc.extend(b.clone());
+    for i in 1..(m + 1) {
+        acc[i] += acc[i - 1];
+    }
+
+    let mut ans = 0;
+    for ai in 0..n {
+        if a[ai] >= p {
+            ans += p * m;
+        } else {
+            let bi = b.partition_point(|&i| i <= p - a[ai]);
+            ans += a[ai] * bi + acc[bi];
+            if bi < m {
+                ans += p * (m - bi);
+            }
+        }
+    }
+
+    println!("{}", ans);
 }
