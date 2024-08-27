@@ -57,10 +57,9 @@ fn main() {
         let parent = *adj[target].iter().next().unwrap();
         adj[target].remove(&parent);
         adj[parent].remove(&target);
-        if adj[parent].len() == 1 {
+        if adj[parent].len() == 1 && !v.contains(&parent) {
             leaves.insert(parent);
         }
-        leaves = leaves.difference(&v).cloned().collect::<HashSet<usize>>();
     }
 
     let ans = adj.iter().filter(|&x| x.len() > 0).count().max(1);
