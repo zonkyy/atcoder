@@ -27,6 +27,20 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        mut a: [i64; n],
     };
+
+    let mut ans = 0;
+
+    a.sort();
+    a.reverse();
+    while a[1] > 0 {
+        a[0] -= 1;
+        a[1] -= 1;
+        a.sort();
+        a.reverse();
+        ans += 1;
+    }
+
+    println!("{}", ans);
 }

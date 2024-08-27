@@ -1,3 +1,4 @@
+use itertools::Itertools;
 use proconio::{fastout, input, marker::*};
 
 trait Transpose<Iter: IntoIterator> {
@@ -27,6 +28,9 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 fn main() {
     input! {
         n: usize,
+        k: usize,
         a: [usize; n],
     };
+
+    println!("{}", a[(n - k)..].iter().chain(&a[..(n - k)]).join(" "));
 }
