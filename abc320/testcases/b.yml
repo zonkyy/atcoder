@@ -19,6 +19,11 @@ cases:
       AAAAAAAAAA
     out: |
       10
+  - name: testcase04
+    in: |
+      UYWZYYUZUYUUZUYUZZYYZUZZUYYZWUZUYZUYZWZUYZWYUZZZUZYZYYUYYY
+    out: |
+      5
 
 extend:
   - type: Text

@@ -26,7 +26,39 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        m: usize,
+        s: [Chars; 3],
     };
+
+    let mut ans = usize::MAX;
+    for i in 0..10 {
+        let target = ('0' as u8 + i as u8) as char;
+        if !(s[0].contains(&target) && s[1].contains(&target) && s[2].contains(&target)) {
+            continue;
+        }
+
+        for order in [
+            [0, 1, 2],
+            [0, 2, 1],
+            [1, 0, 2],
+            [1, 2, 0],
+            [2, 0, 1],
+            [2, 1, 0],
+        ] {
+            let mut idx = 0;
+            for si in order {
+                while s[si][idx % m] != target {
+                    idx += 1;
+                }
+                idx += 1;
+            }
+            ans = ans.min(idx);
+        }
+    }
+
+    if ans == usize::MAX {
+        println!("-1");
+    } else {
+        println!("{}", ans - 1);
+    }
 }

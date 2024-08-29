@@ -26,7 +26,9 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        a: u32,
+        b: u32,
     };
+
+    println!("{}", a.pow(b) + b.pow(a));
 }

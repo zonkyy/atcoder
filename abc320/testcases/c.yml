@@ -28,6 +28,14 @@ cases:
       33333
     out: |
       -1
+  - name: my1
+    in: |
+      1
+      0
+      0
+      0
+    out: |
+      2
 
 extend:
   - type: Text

@@ -26,7 +26,17 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
+        s: String,
     };
+
+    let mut ans = 0;
+    for l in 0..s.len() {
+        for r in l..s.len() {
+            if s[l..=r] == s[l..=r].chars().rev().collect::<String>() {
+                ans = ans.max(r - l + 1);
+            }
+        }
+    }
+
+    println!("{}", ans);
 }
