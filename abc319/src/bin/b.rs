@@ -23,10 +23,29 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
     }
 }
 
+fn is_multiple(n: usize, i: usize) -> bool {
+    if n == 0 {
+        return true;
+    }
+
+    n % i == 0
+}
+
 #[fastout]
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
     };
+
+    'outer: for i in 0..=n {
+        for j in 1..=9 {
+            if n % j == 0 && is_multiple(i, n / j) {
+                print!("{}", j);
+                continue 'outer;
+            }
+        }
+        print!("-")
+    }
+
+    println!();
 }
