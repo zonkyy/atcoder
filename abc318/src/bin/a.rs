@@ -27,6 +27,16 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        m: usize,
+        p: usize,
     };
+
+    let mut day = m;
+    let mut ans = 0;
+    while day <= n {
+        ans += 1;
+        day += p;
+    }
+
+    println!("{}", ans);
 }

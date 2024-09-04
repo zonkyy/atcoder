@@ -27,6 +27,30 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        d: usize,
+        p: usize,
+        mut f: [usize; n],
     };
+
+    f.sort();
+
+    let mut ans = 0;
+    while f.len() >= d {
+        let mut tmp = f.split_off(f.len() - d);
+        let sum = tmp.iter().sum::<usize>();
+        if sum <= p {
+            ans += sum;
+            break;
+        }
+        ans += p;
+    }
+
+    let rest_sum = f.iter().sum::<usize>();
+    if f.len() < d && p < rest_sum {
+        ans += p;
+    } else {
+        ans += rest_sum;
+    }
+
+    println!("{}", ans);
 }

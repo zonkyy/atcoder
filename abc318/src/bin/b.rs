@@ -27,6 +27,27 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        abcd: [(usize, usize, usize, usize); n],
     };
+
+    // field[0][0] = 1 とは、(0,0) を左下とする正方形にシートが掛かっていることを示す
+    let mut field = vec![vec![0; 101]; 101];
+    for (a, b, c, d) in abcd {
+        for i in a..b {
+            for j in c..d {
+                field[i][j] += 1;
+            }
+        }
+    }
+
+    let mut ans = 0;
+    for i in 0..=100 {
+        for j in 0..=100 {
+            if field[i][j] > 0 {
+                ans += 1;
+            }
+        }
+    }
+
+    println!("{}", ans);
 }
