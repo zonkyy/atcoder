@@ -27,6 +27,15 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        h: usize,
+        x: usize,
+        p: [usize; n],
     };
+
+    for (i, &item) in p.iter().enumerate() {
+        if h + item >= x {
+            println!("{}", i + 1);
+            return;
+        }
+    }
 }

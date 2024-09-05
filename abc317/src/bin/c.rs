@@ -1,3 +1,5 @@
+use std::collections::HashSet;
+
 use proconio::{fastout, input, marker::*};
 
 trait Transpose<Iter: IntoIterator> {
@@ -23,10 +25,42 @@ impl<Iter: IntoIterator> Iterator for Transposed<Iter> {
     }
 }
 
+fn dfs(
+    distance: usize,
+    now: usize,
+    visited: HashSet<usize>,
+    roads: &Vec<Vec<(usize, usize)>>,
+) -> usize {
+    let mut max_distance = distance;
+
+    for &(next, c) in roads[now].iter() {
+        if !visited.contains(&next) {
+            let mut new_visited = visited.clone();
+            new_visited.insert(next);
+            max_distance = max_distance.max(dfs(distance + c, next, new_visited, roads));
+        }
+    }
+
+    return max_distance;
+}
+
 #[fastout]
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        m: usize,
+        abc: [(Usize1, Usize1, usize); m],
     };
+
+    let mut roads = vec![vec![]; n];
+    for &(a, b, c) in abc.iter() {
+        roads[a].push((b, c));
+        roads[b].push((a, c));
+    }
+
+    let mut ans = 0;
+    for i in 0..n {
+        ans = ans.max(dfs(0, i, HashSet::from([i]), &roads));
+    }
+    println!("{}", ans);
 }
