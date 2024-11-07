@@ -4,6 +4,8 @@ use proconio::{fastout, input, marker::*};
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
     };
+
+    let ans = n / 3 + n / 5 + n / 7 - n / 15 - n / 35 - n / 21 + n / 105;
+    println!("{}", ans);
 }

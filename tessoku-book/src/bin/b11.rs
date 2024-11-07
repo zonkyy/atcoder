@@ -4,6 +4,13 @@ use proconio::{fastout, input, marker::*};
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        mut a: [usize; n],
+        q: usize,
+        x: [usize; q],
     };
+    a.sort();
+
+    for i in 0..q {
+        println!("{}", a.partition_point(|&y| y < x[i]));
+    }
 }

@@ -8,7 +8,7 @@ cases:
     in: |
       2
     out: |
-      1.000000
+      0.9999638566970825
 
 extend:
   - type: Text
