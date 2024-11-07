@@ -1,0 +1,31 @@
+---
+type: Batch
+timelimit: 2s
+match: SplitWhitespace
+
+cases:
+  - name: sample1
+    in: |
+      BAABCBCCABCAC
+    out: |
+      BCAC
+  - name: sample2
+    in: |
+      ABCABC
+    out: >
+  - name: sample3
+    in: |
+      AAABCABCABCAABCABCBBBAABCBCCCAAABCBCBCC
+    out: |
+      AAABBBCCC
+  - name: my1
+    in: |
+      AABBCC
+    out: |
+      AABBCC
+
+extend:
+  - type: Text
+    path: "./d"
+    in: /in/*.txt
+    out: /out/*.txt

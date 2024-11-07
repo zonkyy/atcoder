@@ -19,6 +19,56 @@ cases:
       -177018739841739480 2436426 -80154573737296504 585335723211047198
     out: |
       273142010859
+  - name: my1
+    in: |
+      4 3 -1 6
+    out: |
+      2
+  - name: check_a1
+    in: |
+      0 3 -5 5
+    out: |
+      3
+  - name: check_a2
+    in: |
+      0 3 -6 6
+    out: |
+      5
+  - name: check_a3
+    in: |
+      0 3 -7 7
+    out: |
+      5
+  - name: check_b1
+    in: |
+      0 3 5 11
+    out: |
+      2
+  - name: check_b2
+    in: |
+      0 3 6 12
+    out: |
+      3
+  - name: check_b3
+    in: |
+      0 3 7 13
+    out: |
+      2
+  - name: check_c1
+    in: |
+      0 3 -16 -7
+    out: |
+      3
+  - name: check_c2
+    in: |
+      0 3 -15 -6
+    out: |
+      4
+  - name: check_c3
+    in: |
+      0 3 -14 -5
+    out: |
+      3
 
 extend:
   - type: Text

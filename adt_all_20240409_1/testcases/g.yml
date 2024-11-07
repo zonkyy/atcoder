@@ -19,6 +19,16 @@ cases:
       999999999989449206
     out: |
       1000000000000000000
+  - name: test_02
+    in: |
+      1
+    out: |
+      1
+  - name: test_05
+    in: |
+      4
+    out: |
+      4
 
 extend:
   - type: Text

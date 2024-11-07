@@ -1,0 +1,60 @@
+---
+type: Batch
+timelimit: 4s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      4
+      4320
+    out: |
+      2
+  - name: sample2
+    in: |
+      3
+      010
+    out: |
+      2
+  - name: sample3
+    in: |
+      13
+      8694027811503
+    out: |
+      840
+  - name: my0
+    in: |
+      1
+      0
+    out: |
+      1
+  - name: my1
+    in: |
+      1
+      1
+    out: |
+      1
+  - name: my2
+    in: |
+      1
+      2
+    out: |
+      0
+  - name: my4
+    in: |
+      1
+      4
+    out: |
+      1
+  - name: my9
+    in: |
+      1
+      9
+    out: |
+      1
+
+extend:
+  - type: Text
+    path: "./d"
+    in: /in/*.txt
+    out: /out/*.txt

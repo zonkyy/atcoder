@@ -4,6 +4,11 @@ use proconio::{fastout, input, marker::*};
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        c: Chars,
     };
+
+    for cc in c {
+        print!("{}{}", cc, cc);
+    }
+    println!();
 }

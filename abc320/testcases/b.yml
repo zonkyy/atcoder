@@ -1,0 +1,32 @@
+---
+type: Batch
+timelimit: ~
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      TOYOTA
+    out: |
+      5
+  - name: sample2
+    in: |
+      ABCDEFG
+    out: |
+      1
+  - name: sample3
+    in: |
+      AAAAAAAAAA
+    out: |
+      10
+  - name: testcase04
+    in: |
+      UYWZYYUZUYUUZUYUZZYYZUZZUYYZWUZUYZUYZWZUYZWYUZZZUZYZYYUYYY
+    out: |
+      5
+
+extend:
+  - type: Text
+    path: "./b"
+    in: /in/*.txt
+    out: /out/*.txt
